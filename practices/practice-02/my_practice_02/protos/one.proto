@@ -1,40 +1,34 @@
 #VRML_SIM R2025a utf8
 
 PROTO one [
-    field SFVec3f translation 0 0 0 
-    field SFRotation 0 0 1 0
-    field SFString name "one"
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFColor color 0.5 0.5 0.5
+  field SFString name "digit_one"
 ]
-
 {
-    Solid {
-        translation IS translation
-        rotation IS rotation
-        name IS name
-    }
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    name IS name
     children [
-        Transfrom {
-            translation 1.0 1.0 0.2
-            children [
-                Shape {
-                    appearance PBRAppearance {
-                        baseColor 0.5 0.5 0.5 
-                        roughness 1.0
-                        metalness 0
-                    }
-                    geometry Box {
-                        size 0.3 2.3 0.4
-                    }
-                }
-            ]
-        }
-    ]
-    boundingObject Transfrom {
-        translation 1.0 1.0 0.2
+      Pose {
+        translation 0 0 0.15
         children [
-            Box {
-                size 0.2 2.3 0.4
+          Shape {
+            appearance PBRAppearance {
+              baseColor IS color
+              roughness 1
+              metalness 0
             }
+            geometry Box { size 0.3 1.5 0.3 }
+          }
         ]
+      }
+    ]
+    boundingObject Pose {
+      translation 0 0 0.15
+      children [ Box { size 0.3 1.5 0.3 } ]
     }
+  }
 }
