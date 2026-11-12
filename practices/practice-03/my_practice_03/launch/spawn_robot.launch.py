@@ -5,6 +5,7 @@ from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions.path_join_substitution import PathJoinSubstitution
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 import launch
 from ament_index_python.packages import get_package_share_directory
 from webots_ros2_driver.webots_launcher import WebotsLauncher
@@ -27,13 +28,14 @@ def generate_launch_description():
     )
 
     output_name = LaunchConfiguration("output_name")
+    duration = LaunchConfiguration("duration")
     data_handler = Node(
         package='my_practice_03',
         executable='data_handler',          # имя из console_scripts в setup.py
         output='screen',
         parameters=[{
             'use_sim_time': True,
-            'duration': 120.0,
+            'duration': ParameterValue(duration, value_type=float),
             'output_name': output_name,
             'output_directory': '/home/fedor/practices_ws/src/practice-03/results',
         }],
