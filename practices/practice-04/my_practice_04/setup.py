@@ -26,7 +26,7 @@ setup(
         ),
         (
             os.path.join("share", package_name, "maps"),
-            glob(os.path.join("maps", "*.pgm")) + glob(os.path.join("maps", "*.yaml")),
+            glob('maps/*.png') + glob(os.path.join("maps", "*.pgm")) + glob(os.path.join("maps", "*.yaml")),
         ),
         (
             os.path.join("share", package_name, "config"),
